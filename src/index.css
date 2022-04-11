@@ -133,8 +133,17 @@ h4 {
 }
 .header_menu {
   display: flex;
+  place-items: center;
   gap: 0.5em;
   height: 100%;
+}
+.header_divider {
+  display: block;
+  height: 80%;
+  width: 1px;
+  margin-inline: var(--spacing-sm);
+  background-color: var(--clr-icon);
+  opacity: 0.5;
 }
 .header_action {
   display: flex;
@@ -240,6 +249,12 @@ h4 {
   }
 }
 
+.document-info {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
 /* Button */
 .button {
   border: none;
@@ -266,11 +281,11 @@ h4 {
   }
 }
 .button_menu {
-  display: inline-flex;
+  display: inline-grid;
   place-items: center;
-  height: inherit;
   background-color: var(--clr-editor);
   color: var(--clr-font);
   font-size: 1.5em;
-  padding: 100%;
+  height: inherit;
+  aspect-ratio: 1;
 }
