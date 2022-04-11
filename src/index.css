@@ -1,11 +1,14 @@
 /* Variables */
 :root {
-  /* default */
-  font-size: 1em;
+  /* font */
+  font-size: 14px;
+
   /* spacing */
   --height-heading: 3.5em;
   --height-tab: 2.5em;
   --spacing: 1em;
+  --spacing-sm: 0.5em;
+  --spacing-xsm: 0.25em;
 
   /* colors */
   --clr-accent: #fb5607;
@@ -16,11 +19,13 @@
   --clr-light-02: #e9ecef;
   --clr-light-03: #dee2e6;
 
-  /* --clr-font: var(--clr-light-01);
-  --clr-background: var(--clr-dark-01);
-  --clr-tab-label: var(--clr-dark-02);
-  --clr-editor: var(--clr-dark-03);
-  --clr-icon: var(--clr-light-01); */
+  /* effects */
+  --hover-opacity: 0.8;
+}
+@media (min-width: 768px) {
+  :root {
+    font-size: 1em;
+  }
 }
 
 /* Utility classes */
@@ -39,8 +44,19 @@
   --clr-icon: var(--clr-dark-01);
 }
 
+.icon {
+  font-size: 1.2em;
+  color: var(--clr-font);
+  cursor: pointer;
+}
+.icon:hover {
+  opacity: var(--hover-opacity);
+}
+
 /* Base */
-* {
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -70,7 +86,20 @@ textarea {
   color: inherit;
   padding: 0.5em;
   font-family: inherit;
+  font-size: inherit;
   border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small,
+b {
+  color: var(--clr-font);
 }
 
 h4 {
@@ -78,21 +107,22 @@ h4 {
 }
 
 /* Component classes */
-#root {
-}
 .layout {
   background-color: var(--clr-background);
   display: flex;
-  flex-direction: column;
-  justify-content: stretch;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1px;
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
   }
-}
+} */
+
 .header {
   display: flex;
   flex-direction: row;
@@ -100,6 +130,16 @@ h4 {
   justify-content: space-between;
   background-color: var(--clr-background);
   height: var(--height-heading);
+}
+.header_menu {
+  display: flex;
+  gap: 0.5em;
+  height: 100%;
+}
+.header_action {
+  display: flex;
+  place-items: center;
+  gap: var(--spacing);
 }
 
 .tab-label {
@@ -119,16 +159,118 @@ h4 {
   min-height: calc(100vh - (var(--height-heading) + var(--height-tab)));
   background: var(--clr-editor);
   color: var(--clr-font);
+  font-size: inherit;
+  width: 100%;
+  transition: width 0.5s ease-in;
+}
+.editor.hide,
+.preview.hide {
+  display: none;
 }
 
 .preview_markdown {
-  padding: var(--spacing);
-  height: 100%;
+  padding: var(--spacing-sm);
+  min-height: inherit;
+  background-color: inherit;
 }
 
+.menu {
+  position: absolute;
+  top: var(--height-heading);
+  left: var(--spacing-sm);
+  max-height: calc(100% - var(--height-heading));
+  background-color: var(--clr-background);
+  max-width: 300px;
+  padding: 0.25em 0.5em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1px;
+}
+
+@keyframes toggleMenu {
+  0% {
+  }
+
+  100% {
+  }
+}
+
+.notification {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 3;
+  transform: translateX(-50%);
+  min-width: 240px;
+  max-width: 500px;
+  min-height: 100px;
+  background-color: var(--clr-editor);
+  color: var(--clr-font);
+  border: solid 2px var(--clr-font);
+  border-radius: 0.5rem;
+  /* display: grid; */
+  display: none;
+  place-items: center;
+  animation-name: notification_alert;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+.notification.alert {
+  display: grid;
+}
+
+@keyframes notification_alert {
+  0% {
+    opacity: 0.2;
+    top: -10px;
+  }
+
+  50% {
+    opacity: 0.6;
+    top: 40px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 10px;
+  }
+}
+
+/* Button */
+.button {
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
 .button_save {
+  display: flex;
+  place-items: center;
+  gap: var(--spacing-sm);
   background-color: var(--clr-accent);
   color: var(--clr-light-01);
   font-size: 1em;
-  padding: 0.5em;
+  /* border: none; */
+  height: 2.5rem;
+  padding-inline: 0.8em;
+  border-radius: 0.25em;
+  margin-inline: 0.5em;
+}
+@media screen and (max-width: 768px) {
+  .button_save span {
+    display: none;
+  }
+}
+.button_menu {
+  display: inline-flex;
+  place-items: center;
+  height: inherit;
+  background-color: var(--clr-editor);
+  color: var(--clr-font);
+  font-size: 1.5em;
+  padding: 100%;
 }

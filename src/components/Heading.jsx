@@ -1,8 +1,31 @@
-const Heading = ({ name, icon }) => {
+import { useRef } from "react";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SaveButton from "./SaveButton";
+
+const Heading = () => {
+  const menuRef = useRef("");
+
+  function handleMenu(event) {
+    console.log(event);
+  }
+
   return (
     <header className="header">
-      <h2>{name}</h2>
-      <span>{icon}</span>
+      <span className="header_menu">
+        <button
+          className="button button_menu"
+          onClick={handleMenu}
+          ref={menuRef}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+      </span>
+      <span className="header_action">
+        <FontAwesomeIcon icon={faTrashCan} className="icon" />
+        <SaveButton />
+      </span>
     </header>
   );
 };
