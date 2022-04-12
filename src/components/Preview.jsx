@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
 import MarkdownContext from "../context/MarkdownContext";
 import AppContext from "../context/AppContext";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+// import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import TabLabel from "./TabLabel";
 import TogglePreview from "./TogglePreview";
 
@@ -28,7 +30,9 @@ const Preview = () => {
         <h4>Preview</h4>
         {isPreview && <TogglePreview />}
       </TabLabel>
-      <ReactMarkdown className="preview_markdown">{markDown}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} className="preview_markdown">
+        {markDown}
+      </ReactMarkdown>
     </main>
   );
 };

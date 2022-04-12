@@ -69,7 +69,8 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Merriweather", serif;
+  /* font-family: "Merriweather", serif; */
+  font-family: "Barlow", sans-serif;
   min-height: 100vh;
   background-color: var(--clr-background);
 }
