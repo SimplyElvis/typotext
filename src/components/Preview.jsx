@@ -22,7 +22,7 @@ const Preview = () => {
     } else if (!mobileLayout) {
       isPreview ? setSwitchPreview("") : setSwitchPreview("hide");
     }
-  }, [mobileLayout, isPreview]);
+  }, [mobileLayout, isPreview, setSwitchPreview]);
 
   return (
     <main className={`preview ${switchPreview}`}>

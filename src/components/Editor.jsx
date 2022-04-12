@@ -22,7 +22,7 @@ const Editor = () => {
         setSwitchEditor("");
       }
     }
-  }, [mobileLayout, isPreview]);
+  }, [mobileLayout, isPreview, setSwitchEditor]);
 
   return (
     <section className={`editor ${switchEditor}`}>

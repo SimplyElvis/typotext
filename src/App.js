@@ -22,7 +22,7 @@ const App = () => {
     } else {
       setMobileLayout(false);
     }
-  }, []);
+  }, [setIsPreview, setMobileLayout]);
 
   return (
     <main ref={themeRef}>

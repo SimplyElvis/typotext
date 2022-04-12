@@ -1,4 +1,3 @@
-import { useRef } from "react";
 // import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,11 +6,9 @@ import { useRef } from "react";
 import ToggleTheme from "./ToggleTheme";
 
 const Heading = () => {
-  const menuRef = useRef("");
-
-  function handleMenu(event) {
-    console.log(event);
-  }
+  // function handleMenu(event) {
+  //   console.log(event);
+  // }
 
   return (
     <header className="header">
