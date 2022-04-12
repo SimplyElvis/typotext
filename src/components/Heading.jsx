@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SaveButton from "./SaveButton";
-import DocumentInfo from "./DocumentInfo";
+// import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+// import { faBars } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import SaveButton from "./SaveButton";
+// import DocumentInfo from "./DocumentInfo";
+import ToggleTheme from "./ToggleTheme";
 
 const Heading = () => {
   const menuRef = useRef("");
@@ -28,6 +29,7 @@ const Heading = () => {
         <span className="header_divider"></span>
         {/* <DocumentInfo /> */}
       </span>
+      <ToggleTheme />
       {/* <span className="header_action">
         <FontAwesomeIcon icon={faTrashCan} className="icon" />
         <SaveButton />

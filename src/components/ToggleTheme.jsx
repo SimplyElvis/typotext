@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "../context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
 const ToggleTheme = () => {
   const { setTheme, theme } = useContext(AppContext);
@@ -12,7 +12,11 @@ const ToggleTheme = () => {
   }
 
   return (
-    <FontAwesomeIcon icon={faEye} className="icon" onClick={toggleTheme} />
+    <FontAwesomeIcon
+      icon={theme === "dark" ? faSun : faMoon}
+      className="icon"
+      onClick={toggleTheme}
+    />
   );
 };
 
